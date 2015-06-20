@@ -37,7 +37,7 @@ public class MMCriteriaForm extends javax.swing.JFrame {
      
         this.setResizable(false);
         mmCriteria.setStr(res);
-           jTextArea1.setText(mmCriteria.getString());
+           jTextArea1.setText("   Запропоновані результати:\t"+mmCriteria.getResult()+"\n"+mmCriteria.getString());
 //        System.out.println("++++++++++++++++++++++++++"+mmCriteria.getString());
     }
 
@@ -127,13 +127,11 @@ public class MMCriteriaForm extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane3)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -263,6 +261,7 @@ public class MMCriteriaForm extends javax.swing.JFrame {
     public void MMGUI() {
         String[] columnNames = Variables.miner;
         jTable1.setModel(new DefaultTableModel(init3(res), columnNames));
+       
     }
 
     public void tmGUI() {

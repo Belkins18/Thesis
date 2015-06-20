@@ -65,6 +65,7 @@ public class MMCriteria {
                 str += Variables.recomendate[i]+ " \n";
                 System.out.println(Variables.recomendate[i]);
             }
+           
             System.out.println("");
         }
         this.str = str;
@@ -74,61 +75,4 @@ public class MMCriteria {
         System.out.println();
         return str;
     }
-
-//    public List<Integer> calculate(int[][] ZO) {
-//        int[] result = new int[ZO.length];
-//        for (int i = 0; i < ZO.length; i++) {
-//            result[i] = Integer.MAX_VALUE;
-//            for (int j = 0; j < ZO[i].length; j++) {
-//                if (result[i] > ZO[i][j]) {
-//                    result[i] = ZO[i][j];
-//                }
-//
-//            }
-//            System.out.println(result[i]);
-//        }
-//        int max = result[0];
-//
-//        for (int i = 1; i < result.length; i++) {
-//            if (max < result[i]) {
-//                max = result[i];
-//            }
-//        }
-//        List<Integer> res = new ArrayList<>();
-//        for (int i = 0; i < result.length; i++) {
-//            if (max == result[i]) {
-//                res.add(i + 1);
-//                System.out.println(i + " " + result[i]);
-//            }
-//        }
-//        System.out.println(res);
-//        return res;
-//    }
-//    public  List<Integer> calculate(int[][] ZO) {
-//        int[] result = new int[ZO[0].length];
-//        result = ZO[0];
-//        for (int i = 1; i < ZO.length; i++) {
-//            for (int j = 0; j < ZO[i].length; j++) {
-//                if (result[j] > ZO[i][j]) {
-//                    result[j] = ZO[i][j];
-//                }
-//            }
-//        }
-//        int max = result[0];
-//
-//        for (int i = 1; i < result.length; i++) {
-//            if (max < result[i]) {
-//                max = result[i];
-//            }
-//        }
-//        List<Integer> res = new ArrayList<>();
-//        for (int i = 0; i < result.length; i++) {
-//            if (max == result[i]) {
-//                res.add(i + 1);
-//               System.out.println(i + " " + result[i]);
-//            }
-//        }
-//        System.out.println(res);
-//        return res;
-//    }
 }

@@ -46,4 +46,30 @@ public class BLCriteria {
         System.out.println(result);
         return result;
     }
+
+    private static String str = "";
+
+    public void setStr(double[] sumeqI) {
+        double max = sumeqI[0];
+        for (int i = 1; i < sumeqI.length; i++) {
+            if (max < sumeqI[i]) {
+                max = sumeqI[i];
+            }
+        }
+        for (int i = 1; i < sumeqI.length; i++) {
+            if (max == sumeqI[i]) {
+                result.add(i + 1);
+                str += Variables.recomendate[i] + " \n";
+                System.out.println(Variables.recomendate[i]);
+            }
+            System.out.println("");
+        }
+        this.str = str;
+    }
+
+    public String getString() {
+        System.out.println();
+        return str;
+    }
+
 }

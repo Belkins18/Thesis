@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SCriteria {
 
-    private int[] maxJ = new int[Variables.columnNames.length];
+    private static int[] maxJ = new int[Variables.columnNames.length];
 
     public void setMaxJ(int[][] ZO) {
         maxJ = new int[Variables.columnNames.length];
@@ -29,7 +29,7 @@ public class SCriteria {
         return maxJ;
     }
 
-    private int[][] matrixZal = new int[dr.variables.Variables.columnNames2.length][dr.variables.Variables.columnNames.length];
+    private static int[][] matrixZal = new int[dr.variables.Variables.columnNames2.length][dr.variables.Variables.columnNames.length];
 
     public void setMatrixZal(int[][] ZO, int[] maxJ) {
         for (int i = 0; i < ZO.length; i++) {
@@ -55,7 +55,7 @@ public class SCriteria {
         return matrixZal;
     }
 
-    private int[] er = new int[matrixZal.length];
+    private static int[] er = new int[matrixZal.length];
 
     public void setER(int[][] matrixZal) {
         for (int i = 0; i < matrixZal.length; i++) {
@@ -94,5 +94,29 @@ public class SCriteria {
     public List<Integer> getResult() {
         System.out.println(result);
         return result;
+    }
+    
+    private static String str = "";
+
+    public void setStr(int[] er) {
+       int min = er[0];
+        for (int i = 1; i < er.length; i++) {
+            if (min > er[i]) {
+                min = er[i];
+            }
+        }
+        for (int i = 0; i < er.length; i++) {
+            if (min == er[i]) {
+                result.add(i + 1);
+                str += Variables.recomendate[i] + " \n";
+                System.out.println(Variables.recomendate[i]);
+            }
+        }
+        this.str = str;
+    }
+
+    public String getString() {
+        System.out.println();
+        return str;
     }
 }
