@@ -5,9 +5,12 @@ import dr.calculate.firstEtap.SecondStep;
 import dr.calculate.firstEtap.ThirdStep;
 import dr.calculate.firstEtap.TranstormMatrix;
 import dr.calculate.secondtEtap.BLCriteria;
+import dr.calculate.secondtEtap.GCriteria;
+import dr.calculate.secondtEtap.HLCriteria;
 import dr.calculate.secondtEtap.HWCriteria;
 import dr.calculate.secondtEtap.MMCriteria;
 import dr.calculate.secondtEtap.MinusMatrix;
+import dr.calculate.secondtEtap.MultCriteria;
 import dr.calculate.secondtEtap.SCriteria;
 import dr.variables.FullGroupIvents;
 import dr.variables.Variables;
@@ -116,12 +119,10 @@ public class Main {
         System.out.println("//==============================================================================" + "\n");
 //==============================================================================
         System.out.println("//=== S Criteria ===" + "\n");
-        tm.PrintResult();
         SCriteria sCriteria = new SCriteria();
         sCriteria.setMaxJ(tm.getTM());
 //        sCriteria.getMaxJ();
         sCriteria.setMatrixZal(tm.getTM(), sCriteria.getMaxJ());
-        sCriteria.getMatrixZal();
 //        sCriteria.PrintResult(sCriteria.getMatrixZal());
         sCriteria.setER(sCriteria.getMatrixZal());
         sCriteria.setResult(sCriteria.getER());
@@ -129,13 +130,45 @@ public class Main {
         System.out.println("//==============================================================================" + "\n");
 //==============================================================================
         System.out.println("//=== HW Criteria ===" + "\n");
-        HWCriteria hWCriteria = new HWCriteria();
-        hWCriteria.setMinI(tm.getTM());
-        hWCriteria.setMaxI(tm.getTM());
-        hWCriteria.setEr(hWCriteria.getMinI(), hWCriteria.getMaxI());
-        hWCriteria.setRes(hWCriteria.getEr());
-        hWCriteria.getResult();
+        HWCriteria hwCriteria = new HWCriteria();
+        hwCriteria.setMinI(tm.getTM());
+        hwCriteria.setMaxI(tm.getTM());
+        hwCriteria.setEr(hwCriteria.getMinI(), hwCriteria.getMaxI());
+        hwCriteria.setRes(hwCriteria.getEr());
+        hwCriteria.getResult();
         System.out.println("//==============================================================================" + "\n");
 //==============================================================================
+        System.out.println("//=== HL Criteria ===" + "\n");
+        HLCriteria hLCriteria = new HLCriteria();
+        hLCriteria.setSumeqI(tm.getTM());
+        hLCriteria.setMinI(tm.getTM());
+        hLCriteria.setEr(hLCriteria.getSumeqI(), hLCriteria.getMinI());
+        hLCriteria.setRes(hLCriteria.getEr());
+        hLCriteria.getResult();
+        System.out.println("//==============================================================================" + "\n");
+//==============================================================================
+         System.out.println("//=== G Criteria ===" + "\n");
+         GCriteria gCriteria = new GCriteria();
+         MinusMatrix minusMatrix = new MinusMatrix();
+         minusMatrix.setMinusMatrix(tm.getTM());
+         gCriteria.setInputValue(minusMatrix.getMinusMatrix());
+//         gCriteria.setInputValue(tm.getTM());
+         gCriteria.setMinI(gCriteria.getInputValue());
+         System.out.println(Arrays.deepToString(gCriteria.getInputValue()));
+         gCriteria.setRes(gCriteria.getMinI());
+         gCriteria.getResult();
+//==============================================================================
+         System.out.println("//=== П Criteria ===" + "\n");
+         MultCriteria multCriteria = new MultCriteria();
+         multCriteria.setA(minusMatrix.getMinusMatrix());
+//         multCriteria.setA(tm.getTM());
+         multCriteria.getA();
+         multCriteria.setMatrix(minusMatrix.getMinusMatrix(), multCriteria.getA());
+//         multCriteria.getMatrix();
+         multCriteria.setMult(multCriteria.getMatrix());
+         multCriteria.getMult();
+//==============================================================================
+         MainForm form = new MainForm();
+         form.setVisible(true);
     }
 }

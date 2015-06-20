@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MMCriteria {
 
-    int[] minI = new int[Variables.columnNames2.length];
+    private static int[] minI = new int[Variables.columnNames2.length];
 
     public void setMinI(int[][] ZO) {
         for (int i = 0; i < ZO.length; i++) {
@@ -26,7 +26,7 @@ public class MMCriteria {
         return minI;
     }
 
-    private List<Integer> result = new ArrayList<>();
+    private  List<Integer> result = new ArrayList<>();
 
     public void setRes(int[] minI) {
         int max = minI[0];
@@ -38,7 +38,9 @@ public class MMCriteria {
         for (int i = 0; i < minI.length; i++) {
             if (max == minI[i]) {
                 result.add(i + 1);
+//                System.out.println(Variables.recomendate[i]);
             }
+            System.out.println("");
         }
         this.result = result;
     }
@@ -46,6 +48,31 @@ public class MMCriteria {
     public List<Integer> getResult() {
         System.out.println(result);
         return result;
+    }
+    
+    private static String str = "";
+
+    public void setStr(int[] minI) {
+        int max = minI[0];
+        for (int i = 1; i < minI.length; i++) {
+            if (max < minI[i]) {
+                max = minI[i];
+            }
+        }
+        for (int i = 0; i < minI.length; i++) {
+            if (max == minI[i]) {
+                result.add(i + 1);
+                str += Variables.recomendate[i]+ " \n";
+                System.out.println(Variables.recomendate[i]);
+            }
+            System.out.println("");
+        }
+        this.str = str;
+    }
+
+    public String getString() {
+        System.out.println();
+        return str;
     }
 
 //    public List<Integer> calculate(int[][] ZO) {

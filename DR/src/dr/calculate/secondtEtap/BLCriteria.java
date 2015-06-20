@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BLCriteria {
 
-    private double[] sumeqI = new double[Variables.columnNames2.length];
+    private static double[] sumeqI = new double[Variables.columnNames2.length];
 
     public void setSumeqI(int[][] ZO) {
         double q = 1f / ZO[0].length;
@@ -36,7 +36,7 @@ public class BLCriteria {
         for (int i = 0; i < sumeqI.length; i++) {
             if (max == sumeqI[i]) {
                 result.add(i + 1);
-                System.out.println(result);
+                System.out.println(Variables.recomendate[i]);
             }
         }
         this.result = result;

@@ -8,6 +8,27 @@ public class Test {
         {7, 8, 9}};
 
     public static int newarr[][] = new int[3][3];
+    
+     private static double [] mult = new double[3];
+
+    public  void setMult(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            mult[i] = 0;
+            for (int j = 0; j < matrix[i].length; j++) {
+                mult[i] = (matrix[i][j]);
+            }
+            System.out.println(mult[i]);
+        }
+        this.mult = mult;
+    }
+
+    public double [] getMult() {
+        System.out.println("");
+        for (int i = 0; i < mult.length; i++) {
+            System.out.print(mult[i]+"\t");
+        }
+        return mult;
+    }
 
     public static void main(String[] args) {
         for (int i = 0; i < arr.length; i++) {
@@ -29,5 +50,10 @@ public class Test {
             System.out.println("");
         }
 
+        
+        
+        Test t =new Test();
+        t.setMult(arr);
+        t.getMult();
     }
 }
