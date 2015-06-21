@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class HLCriteria {
-
-    private double[] sumeqI = new double[Variables.columnNames2.length];
+//==============================================================================
+    private static double[] sumeqI = new double[Variables.columnNames2.length];
 
     public void setSumeqI(int[][] ZO) {
         double q = 1f / ZO[0].length;
@@ -24,8 +24,8 @@ public class HLCriteria {
 //        System.out.println(Arrays.toString(sumeqI));
         return sumeqI;
     }
-
-    int[] minI = new int[Variables.columnNames2.length];
+//==============================================================================
+    private static int[] minI = new int[Variables.columnNames2.length];
 
     public void setMinI(int[][] ZO) {
         for (int i = 0; i < ZO.length; i++) {
@@ -43,8 +43,8 @@ public class HLCriteria {
 //        System.out.println(Arrays.toString(minI));
         return minI;
     }
-
-    private double[] er = new double[columnNames2.length];
+//==============================================================================
+    private static double[] er = new double[columnNames2.length];
     double nu = 0.5;
 
     public void setEr(double[] SumeqI, int[] MinI) {
@@ -58,7 +58,7 @@ public class HLCriteria {
 //        System.out.println(Arrays.toString(er));
         return er;
     }
-
+//==============================================================================
     private List<Integer> result = new ArrayList<>();
 
     public void setRes(double[] er) {
@@ -80,5 +80,29 @@ public class HLCriteria {
         System.out.println(result);
         return result;
     }
+//==============================================================================
+    private static String str = "";
+
+    public void setStr(double[] er) {
+        double max = er[0];
+        for (int i = 1; i < er.length; i++) {
+            if (max < er[i]) {
+                max = er[i];
+            }
+        }
+        for (int i = 0; i < er.length; i++) {
+            if (max == er[i]) {
+                result.add(i + 1);
+                str += Variables.recomendate[i] + " \n";
+                System.out.println(Variables.recomendate[i]);
+            }
+        }
+        this.result = result;
+    }
+
+    public String getString() {
+        return str;
+    }
+//==============================================================================
 
 }

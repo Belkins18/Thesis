@@ -1,13 +1,15 @@
 package dr.calculate.secondtEtap;
 
+import dr.variables.Variables;
 import static dr.variables.Variables.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class HWCriteria {
+//==============================================================================
 
-    private int[] minI = new int[columnNames2.length];
+    private static int[] minI = new int[columnNames2.length];
 
     public void setMinI(int[][] ZO) {
         int[] minI = new int[ZO.length];
@@ -26,8 +28,8 @@ public class HWCriteria {
 //        System.out.println(Arrays.toString(minI));
         return minI;
     }
-
-    private int[] maxI = new int[columnNames2.length];
+//==============================================================================
+    private static int[] maxI = new int[columnNames2.length];
 
     public void setMaxI(int[][] ZO) {
         int[] maxI = new int[ZO.length];
@@ -46,8 +48,8 @@ public class HWCriteria {
 //        System.out.println(Arrays.toString(maxI));
         return maxI;
     }
-
-    private double[] er = new double[columnNames2.length];
+//==============================================================================
+    private static double[] er = new double[columnNames2.length];
     double c = 0.5;
 
     public void setEr(int[] minI, int[] maxI) {
@@ -61,8 +63,9 @@ public class HWCriteria {
         System.out.println(Arrays.toString(er));
         return er;
     }
+//==============================================================================
+    private static List<Integer> result = new ArrayList<>();
 
-    private List<Integer> result = new ArrayList<>();
     public void setRes(double[] er) {
         double max = er[0];
         for (int i = 1; i < er.length; i++) {
@@ -79,8 +82,30 @@ public class HWCriteria {
     }
 
     public List<Integer> getResult() {
-        System.out.println(result);
         return result;
     }
+//==============================================================================
+    private static String str = "";
 
+    public void setStr(double[] er) {
+        double max = er[0];
+        for (int i = 1; i < er.length; i++) {
+            if (max < er[i]) {
+                max = er[i];
+            }
+        }
+        for (int i = 0; i < er.length; i++) {
+            if (max == er[i]) {
+                result.add(i + 1);
+                str += Variables.recomendate[i] + " \n";
+                System.out.println(Variables.recomendate[i]);
+            }
+        }
+        this.result = result;
+    }
+
+    public String getString() {
+        return str;
+    }
+//==============================================================================
 }
