@@ -120,9 +120,12 @@ public class Main {
 //==============================================================================
         System.out.println("//=== S Criteria ===" + "\n");
         SCriteria sCriteria = new SCriteria();
-        sCriteria.setMaxJ(tm.getTM());
+        MinusMatrix minusMatrix = new MinusMatrix();
+        minusMatrix.setMinusMatrix(tm.getTM());
+        minusMatrix.PrintResult();
+        sCriteria.setMaxJ(minusMatrix.getMinusMatrix());
 //        sCriteria.getMaxJ();
-        sCriteria.setMatrixZal(tm.getTM(), sCriteria.getMaxJ());
+        sCriteria.setMatrixZal(minusMatrix.getMinusMatrix(), sCriteria.getMaxJ());
 //        sCriteria.PrintResult(sCriteria.getMatrixZal());
         sCriteria.setER(sCriteria.getMatrixZal());
         sCriteria.setResult(sCriteria.getER());
@@ -149,7 +152,6 @@ public class Main {
 //==============================================================================
          System.out.println("//=== G Criteria ===" + "\n");
          GCriteria gCriteria = new GCriteria();
-         MinusMatrix minusMatrix = new MinusMatrix();
          minusMatrix.setMinusMatrix(tm.getTM());
          gCriteria.setInputValue(minusMatrix.getMinusMatrix());
 //         gCriteria.setInputValue(tm.getTM());
@@ -162,13 +164,14 @@ public class Main {
          MultCriteria multCriteria = new MultCriteria();
          multCriteria.setA(minusMatrix.getMinusMatrix());
 //         multCriteria.setA(tm.getTM());
-         multCriteria.getA();
+//         multCriteria.getA();
          multCriteria.setMatrix(minusMatrix.getMinusMatrix(), multCriteria.getA());
 //         multCriteria.getMatrix();
          multCriteria.setMult(multCriteria.getMatrix());
          multCriteria.getMult();
+         System.out.println(Arrays.toString(multCriteria.getMult()));
 //==============================================================================
-         MainForm form = new MainForm();
-         form.setVisible(true);
+//         MainForm form = new MainForm();
+//         form.setVisible(true);
     }
 }

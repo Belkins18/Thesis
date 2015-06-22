@@ -6,14 +6,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SCriteria {
-
+    
     private static int[] maxJ = new int[Variables.columnNames.length];
 
     public void setMaxJ(int[][] ZO) {
-        maxJ = new int[Variables.columnNames.length];
         for (int i = 0; i < ZO.length; i++) {
             for (int j = 0; j < ZO[i].length; j++) {
-                if (maxJ[j] < ZO[i][j]) {
+                maxJ[j] = ZO[0][j] ;
+                if (ZO[i][j]>maxJ[j]) {
                     maxJ[j] = ZO[i][j];
                 }
             }
@@ -22,10 +22,11 @@ public class SCriteria {
     }
 
     public int[] getMaxJ() {
-//        for (int i = 0; i < maxJ.length; i++) {
-//            System.out.print(maxJ[i] + "\t");
-//        }
-        System.out.println(Arrays.toString(maxJ));
+        for (int i = 0; i < maxJ.length; i++) {
+            System.out.print(maxJ[i] + "\t");
+        }
+        System.out.println("");
+//        System.out.println(Arrays.toString(maxJ));
         return maxJ;
     }
 
@@ -34,7 +35,7 @@ public class SCriteria {
     public void setMatrixZal(int[][] ZO, int[] maxJ) {
         for (int i = 0; i < ZO.length; i++) {
             for (int j = 0; j < ZO[i].length; j++) {
-                matrixZal[i][j] = maxJ[j] - ZO[i][j];
+                matrixZal[i][j] = maxJ[j]-ZO[i][j];
 
                 if (matrixZal[i][0] == maxJ[i]) {
 
@@ -95,11 +96,11 @@ public class SCriteria {
         System.out.println(result);
         return result;
     }
-    
+
     private static String str = "";
 
     public void setStr(int[] er) {
-       int min = er[0];
+        int min = er[0];
         for (int i = 1; i < er.length; i++) {
             if (min > er[i]) {
                 min = er[i];
